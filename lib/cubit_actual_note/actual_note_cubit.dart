@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:to_do_bloc/data/models/hive_note.dart';
+import 'package:to_do/data/models/hive_note.dart';
 
 part 'actual_note_state.dart';
 

@@ -1,6 +1,6 @@
-import 'package:to_do_bloc/data/models/hive_note.dart';
-import 'package:to_do_bloc/utils/box.dart';
-import 'package:to_do_bloc/utils/diccionary.dart';
+import 'package:to_do/data/models/hive_note.dart';
+import 'package:to_do/utils/box.dart';
+import 'package:to_do/utils/diccionary.dart';
 
 class NoteRepository {
   Future<List<NoteModelHive>> loadNotes() async {

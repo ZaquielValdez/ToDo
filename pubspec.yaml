@@ -1,4 +1,4 @@
-name: to_do_bloc
+name: to_do
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.18.1
   path_provider: ^2.1.1
   provider: ^6.1.1
+  rename: ^3.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

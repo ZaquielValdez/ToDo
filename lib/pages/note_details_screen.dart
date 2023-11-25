@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_bloc/cubit_actual_note/actual_note_cubit.dart';
+import 'package:to_do/cubit_actual_note/actual_note_cubit.dart';
 
 class NoteDetails extends StatelessWidget {
   const NoteDetails({

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_bloc/bloc/note_bloc/note_bloc.dart';
-import 'package:to_do_bloc/cubit_actual_note/actual_note_cubit.dart';
-import 'package:to_do_bloc/utils/box.dart';
-import 'package:to_do_bloc/widget/alerts/alert_dialog.dart';
-import 'package:to_do_bloc/widget/note_body.dart';
+import 'package:to_do/bloc/note_bloc/note_bloc.dart';
+import 'package:to_do/cubit_actual_note/actual_note_cubit.dart';
+import 'package:to_do/widget/alerts/alert_dialog.dart';
+import 'package:to_do/widget/note_body.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -31,21 +30,6 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 25, 30, 22),
         centerTitle: true,
-        actions: [
-          TextButton(
-            onPressed: () {
-              noteBox.clear();
-              setState(() {});
-            },
-            child: const Text(
-              "Clear hive",
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
         title: const Text(
           'ToDo',
           style: TextStyle(

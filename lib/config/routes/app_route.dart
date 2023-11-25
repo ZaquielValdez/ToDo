@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:to_do_bloc/pages/home.dart';
-import 'package:to_do_bloc/pages/note_details_screen.dart';
-import 'package:to_do_bloc/pages/splash_screen.dart';
+import 'package:to_do/pages/home.dart';
+import 'package:to_do/pages/note_details_screen.dart';
+import 'package:to_do/pages/splash_screen.dart';
 
 final appRoute = GoRouter(routes: [
   GoRoute(

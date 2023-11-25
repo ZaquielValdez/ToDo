@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:to_do_bloc/bloc/note_bloc/note_bloc.dart';
-import 'package:to_do_bloc/data/models/hive_note.dart';
+import 'package:to_do/bloc/note_bloc/note_bloc.dart';
+import 'package:to_do/data/models/hive_note.dart';
 
 Future<dynamic> updateAlert(
     BuildContext context, Size size, NoteModelHive note) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:to_do_bloc/bloc/note_bloc/note_bloc.dart';
-import 'package:to_do_bloc/data/models/hive_note.dart';
+import 'package:to_do/bloc/note_bloc/note_bloc.dart';
+import 'package:to_do/data/models/hive_note.dart';
 
 Future<dynamic> createNoteAlert(BuildContext context, Size size) {
   final TextEditingController nameControl = TextEditingController();
@@ -124,10 +124,11 @@ Future<dynamic> createNoteAlert(BuildContext context, Size size) {
                 style: const TextStyle(fontSize: 19, color: Colors.white54),
                 onTap: () async {
                   DateTime? date = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100));
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
 
                   if (date != null) {
                     dateControl.text = DateFormat("yyyy/MM/dd").format(date);
