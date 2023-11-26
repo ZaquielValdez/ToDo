@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 25, 25, 25),
+      backgroundColor: Colors.black,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,20 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Center(
                 child: Image.asset(
-                  'assets/images/amc_loading.gif',
+                  'assets/images/loading_pages.gif',
                   fit: BoxFit.cover,
                   height: size.height * 0.4,
-                ),
-              ),
-              const Positioned(
-                bottom: 0,
-                left: 230,
-                child: Text(
-                  'Loading',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white60,
-                  ),
                 ),
               ),
             ],

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,9 +46,8 @@ Future<dynamic> updateAlert(
             ],
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        content: ListView(
+          shrinkWrap: true,
           children: [
             Container(
               width: size.width,
@@ -159,6 +160,9 @@ Future<dynamic> updateAlert(
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 103, 173, 104),
+                    fixedSize: size.width > 400
+                        ? Size(size.width * 0.2, 50)
+                        : const Size(100, 50),
                   ),
                   onPressed: () {
                     final name = nameControl.text.trim();
@@ -197,33 +201,33 @@ Future<dynamic> updateAlert(
                       note.name = name;
                       note.content = content;
                       note.dateTime = date;
+                      log(note.noteKey.toString());
 
                       context.read<NoteBloc>().add(UpDateNoteEvent(note));
                       Navigator.of(context).pop();
                     }
                   },
-                  child: const Text(
-                    'Guardar',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black87,
-                    ),
+                  child: const Icon(
+                    Icons.update,
+                    size: 30,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 161, 93, 93),
+                    fixedSize: size.width > 400
+                        ? Size(size.width * 0.2, 50)
+                        : const Size(100, 50),
                   ),
                   onPressed: () {
                     context.pop();
                   },
-                  child: const Text(
-                    'Cancelar',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black87,
-                    ),
+                  child: const Icon(
+                    Icons.close_rounded,
+                    size: 30,
+                    color: Colors.black87,
                   ),
                 ),
               ],

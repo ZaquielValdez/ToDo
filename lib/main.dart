@@ -1,3 +1,4 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -11,6 +12,7 @@ import 'package:to_do/utils/box.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Admob.initialize();
   Hive.registerAdapter(NoteModelHiveAdapter());
   noteBox = await Hive.openBox<NoteModelHive>("Notes");
 

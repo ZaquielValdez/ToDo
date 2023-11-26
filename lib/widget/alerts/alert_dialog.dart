@@ -43,9 +43,8 @@ Future<dynamic> createNoteAlert(BuildContext context, Size size) {
             ],
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        content: ListView(
+          shrinkWrap: true,
           children: [
             Container(
               width: size.width,
@@ -152,13 +151,16 @@ Future<dynamic> createNoteAlert(BuildContext context, Size size) {
                 ),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 103, 173, 104),
+                    fixedSize: size.width > 400
+                        ? Size(size.width * 0.2, 50)
+                        : const Size(100, 50),
                   ),
                   onPressed: () {
                     final name = nameControl.text.trim();
@@ -199,32 +201,32 @@ Future<dynamic> createNoteAlert(BuildContext context, Size size) {
                         content: content,
                         dateTime: date,
                       );
+
                       context.read<NoteBloc>().add(AddNewNoteEvent(note));
                       Navigator.of(context).pop();
                     }
                   },
-                  child: const Text(
-                    'Guardar',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black87,
-                    ),
+                  child: const Icon(
+                    Icons.check_rounded,
+                    size: 30,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 161, 93, 93),
+                    fixedSize: size.width > 400
+                        ? Size(size.width * 0.2, 50)
+                        : const Size(100, 50),
                   ),
                   onPressed: () {
                     context.pop();
                   },
-                  child: const Text(
-                    'Cancelar',
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black87,
-                    ),
+                  child: const Icon(
+                    Icons.close_rounded,
+                    size: 30,
+                    color: Colors.black87,
                   ),
                 ),
               ],

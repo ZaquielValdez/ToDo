@@ -16,19 +16,13 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       if (event is AddNewNoteEvent) {
         await _repository.addNoteHive(event.note);
       } else if (event is UpDateNoteEvent) {
-        final updateNote = NoteModelHive().copyWith(
-          name: event.note.name,
-          content: event.note.content,
-          noteKey: event.note.noteKey,
-          dateTime: event.note.dateTime,
-          status: event.note.status,
-        );
-        await _repository.updateNoteHive(updateNote);
+        await _repository.updateNoteHive(event.note);
       } else if (event is DeleteNoteEvent) {
         await _repository.deleteNoteHive(event.note);
       }
-      final note = await _repository.loadNotes();
-      emit(NoteInitialState(note));
+
+      final data = await _repository.loadNotes();
+      emit(NoteInitialState(data));
     });
   }
 }

@@ -1,3 +1,6 @@
+import 'dart:developer' as dev;
+
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -15,11 +18,23 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String filterNote = "";
+  AdmobBannerSize? bannerSize;
+  AdmobInterstitial? interstitialAd;
 
   @override
   void initState() {
     super.initState();
     context.read<NoteBloc>().add(InicialNotesEvent());
+
+    bannerSize = AdmobBannerSize.BANNER;
+    interstitialAd = AdmobInterstitial(
+      adUnitId: 'ca-app-pub-7756393639674422/6005283955',
+      listener: (AdmobAdEvent event, Map<String, dynamic>? args) {
+        if (event == AdmobAdEvent.closed) interstitialAd!.load();
+      },
+    );
+
+    interstitialAd!.load();
   }
 
   @override
@@ -91,30 +106,54 @@ class _HomeState extends State<Home> {
                     return Container();
                   },
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 150),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: SizedBox(
-        height: 90,
-        width: 90,
-        child: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 40, 47, 34),
-          shape: const CircleBorder(),
-          onPressed: () {
-            createNoteAlert(
-              context,
-              size,
-            );
-          },
-          child: const Icon(
-            Icons.add,
-            size: 40,
-            color: Colors.white,
+      bottomSheet: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AdmobBanner(
+            adUnitId: 'ca-app-pub-7756393639674422/9481215295',
+            adSize: bannerSize ?? AdmobBannerSize.BANNER,
+            listener: (AdmobAdEvent event, Map<String, dynamic>? args) {
+              if (event == AdmobAdEvent.loaded) {
+                dev.log("Admob banner loaded!");
+              }
+            },
           ),
-        ),
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 70,
+            width: 70,
+            child: FloatingActionButton(
+              backgroundColor: const Color.fromARGB(255, 40, 47, 34),
+              shape: const CircleBorder(),
+              onPressed: () async {
+                if (await interstitialAd!.isLoaded == true) {
+                  interstitialAd!.show();
+                }
+                // ignore: use_build_context_synchronously
+                createNoteAlert(
+                  context,
+                  size,
+                );
+              },
+              child: const Icon(
+                Icons.add,
+                size: 40,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(height: 35),
+        ],
       ),
     );
   }
@@ -153,9 +192,9 @@ class _HomeState extends State<Home> {
               color: Colors.white54,
             ),
           ),
-          hintText: 'Search',
+          hintText: 'Search Note',
           hintStyle: const TextStyle(
-            fontSize: 19,
+            fontSize: 18,
             color: Colors.white54,
           ),
         ),

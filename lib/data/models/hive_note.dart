@@ -41,7 +41,7 @@ class NoteModelHive extends HiveObject {
       name: name ?? this.name,
       content: content ?? this.content,
       dateTime: dateTime ?? this.dateTime,
-      noteKey: noteKey ?? this.noteKey,
+      noteKey: this.noteKey,
       status: status ?? this.status,
     );
   }

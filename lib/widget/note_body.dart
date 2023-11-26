@@ -33,7 +33,7 @@ class _NoteBodyState extends State<NoteBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.size.height * 0.17,
+      height: widget.size.height * 0.25,
       width: widget.size.width,
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
@@ -48,11 +48,15 @@ class _NoteBodyState extends State<NoteBody> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: Text(
-                  widget.name,
-                  style: const TextStyle(
-                    fontSize: 19,
-                    color: Colors.white,
+                child: SizedBox(
+                  width: widget.size.width * 0.3,
+                  child: Text(
+                    widget.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
